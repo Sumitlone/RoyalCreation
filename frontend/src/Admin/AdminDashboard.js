@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 // Admin Dashboard Main Component
 function AdminDashboard() {
@@ -240,7 +241,7 @@ function Bookings() {
   React.useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/bookings");
+        const response = await fetch(`${API_BASE_URL}/api/bookings`);
         const data = await response.json();
         setBookings(data);
       } catch (error) {
@@ -281,7 +282,7 @@ function Bookings() {
   const handleDelete = async (bookingId) => {
     if (window.confirm('Are you sure you want to delete this booking?')) {
       try {
-        const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/bookings/${bookingId}`, {
           method: 'DELETE'
         });
 
@@ -301,7 +302,7 @@ function Bookings() {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/bookings/${editingBooking._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/bookings/${editingBooking._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -336,7 +337,7 @@ function Bookings() {
   const handleNewBookingSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/bookings", {
+      const response = await fetch(`${API_BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -699,7 +700,7 @@ function Contacts() {
   React.useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/quotes");
+        const response = await fetch(`${API_BASE_URL}/api/quotes`);
         const data = await response.json();
         setQuotes(data);
       } catch (error) {
@@ -712,7 +713,7 @@ function Contacts() {
 
   const handleContactedChange = async (quoteId, contacted) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/quotes/${quoteId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/quotes/${quoteId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -737,7 +738,7 @@ function Contacts() {
   const handleDelete = async (quoteId) => {
     if (window.confirm('Are you sure you want to delete this contact?')) {
       try {
-        const response = await fetch(`http://localhost:5000/api/quotes/${quoteId}`, {
+        const response = await fetch(`${API_BASE_URL}/api/quotes/${quoteId}`, {
           method: 'DELETE'
         });
 
@@ -818,7 +819,7 @@ function Users() {
   React.useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/users");
+        const response = await fetch(`${API_BASE_URL}/api/users`);
         const data = await response.json();
         setUsers(data);
       } catch (error) {
@@ -891,7 +892,7 @@ function Services() {
   React.useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/services");
+        const response = await fetch(`${API_BASE_URL}/api/services`);
         const data = await response.json();
         setServices(data);
       } catch (error) {
@@ -909,7 +910,7 @@ function Services() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/services", {
+      const response = await fetch(`${API_BASE_URL}/api/services`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1057,7 +1058,7 @@ function Vendors() {
   React.useEffect(() => {
     const fetchVendors = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/vendors");
+        const response = await fetch(`${API_BASE_URL}/api/vendors`);
         const data = await response.json();
         setVendors(data);
       } catch (error) {
