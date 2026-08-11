@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 function CreateBlogPost() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ function CreateBlogPost() {
     const authorId = '60d21b4667d0d8992e610c85'; // Hardcoded for now
 
     try {
-      const response = await fetch('http://localhost:5000/api/blogposts', {
+      const response = await fetch(`${API_BASE_URL}/api/blogposts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
