@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 function AddReview() {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ function AddReview() {
     const userId = '60d21b4667d0d8992e610c85'; // Hardcoded for now
 
     try {
-      const response = await fetch('http://localhost:5000/api/reviews', {
+      const response = await fetch(`${API_BASE_URL}/api/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
