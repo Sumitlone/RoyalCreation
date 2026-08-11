@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.css'; // Reusing the same CSS file
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ function SignUp() {
     }
     
     try {
-      const response = await fetch('http://localhost:5000/api/users/register', {
+      const response = await fetch(`${API_BASE_URL}/api/users/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
